@@ -5,7 +5,7 @@
 # Controller for MineSweeper
 
 GET        /                    controllers.MineSweeperController.minesweeper
-
+GET        /new                 controllers.MineSweeperController.newGrid
 GET        /about               controllers.MineSweeperController.about
 
 

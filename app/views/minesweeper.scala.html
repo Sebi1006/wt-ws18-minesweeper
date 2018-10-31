@@ -1,0 +1,39 @@
+@(controller: de.htwg.se.minesweeper.controller.ControllerInterface)
+
+    @size = @{
+        controller.grid
+    }
+
+    @height = @{
+        controller.height()
+    }
+
+    @width = @{
+        controller.width()
+    }
+
+    @main("HTWG Minesweeper") {
+        <div class="gamecontainer">
+            <div class="game">
+            @for(row <- 0 until width) {
+                <div class="house size@size">
+                @for(col <- 0 until height) {
+                    <span class="cell">
+                        <span class="@{
+                            "number"
+                        }">
+                        @{
+                            if(controller.getChecked(row, col)) {
+                                controller.getChecked(row, col).toString.take(1)
+                            } else "_"
+                        }
+                        </span>
+
+                    </span>
+                }
+                </div>
+                <div class="clear"></div>
+            }
+            </div>
+        </div>
+    }

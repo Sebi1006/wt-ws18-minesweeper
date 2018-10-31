@@ -9,14 +9,17 @@ class MineSweeperController @Inject()(cc: ControllerComponents) extends Abstract
 
   val gameController = MineSweeper.controller
 
-  def minesweeperAsText = "hi"
-
   def about = Action {
     Ok(views.html.index())
   }
 
   def minesweeper = Action {
-    Ok(minesweeperAsText)
+    Ok(views.html.minesweeper(gameController))
+  }
+
+  def newGrid = Action {
+    gameController.createGrid(10, 10, 10)
+    Ok(views.html.minesweeper(gameController))
   }
 
 }
