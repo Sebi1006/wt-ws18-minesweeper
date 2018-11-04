@@ -3,11 +3,12 @@ package controllers
 import javax.inject._
 import play.api.mvc._
 import de.htwg.se.minesweeper.MineSweeper
+import de.htwg.se.minesweeper.controller.ControllerInterface
 
 @Singleton
 class MineSweeperController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-  val gameController = MineSweeper.controller
+  val gameController: ControllerInterface = MineSweeper.controller
 
   def about = Action {
     Ok(views.html.index())

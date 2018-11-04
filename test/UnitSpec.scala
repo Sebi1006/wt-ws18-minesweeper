@@ -10,7 +10,6 @@ import play.api.test.FakeRequest
 class UnitSpec extends PlaySpec {
 
   "CountController" should {
-
     "return a valid result with action" in {
       val controller = new CountController(stubControllerComponents(), () => 49)
       val result = controller.count(FakeRequest())
@@ -19,7 +18,6 @@ class UnitSpec extends PlaySpec {
   }
 
   "AsyncController" should {
-
     "return a valid result on action.async" in {
       // actor system will create threads that must be cleaned up even if test fails
       val actorSystem = ActorSystem("test")
@@ -33,7 +31,6 @@ class UnitSpec extends PlaySpec {
         actorSystem.terminate()
       }
     }
-
   }
 
 }
