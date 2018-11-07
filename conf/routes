@@ -4,10 +4,11 @@
 
 # Controller for MineSweeper
 
-GET        /                    controllers.MineSweeperController.minesweeper
-GET        /new                 controllers.MineSweeperController.newGrid
-GET        /about               controllers.MineSweeperController.about
+GET        /                                     controllers.MineSweeperController.minesweeper
+GET        /new                                  controllers.MineSweeperController.newGrid
+GET        /resize/:height:width:numMines        controllers.MineSweeperController.resizeGrid(height:Int, width:Int, numMines:Int)
+GET        /about                                controllers.MineSweeperController.about
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET        /assets/*file                         controllers.Assets.versioned(path="/public", file: Asset)

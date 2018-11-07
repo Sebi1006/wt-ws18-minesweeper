@@ -13,6 +13,7 @@
 }
 
 @main("HTWG Minesweeper") {
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/minesweeper.css")' />
     <div class="gamecontainer">
         <div class="game">
         @for(row <- 0 until width) {
@@ -25,7 +26,7 @@
                     @{
                         if(controller.getChecked(row, col)) {
                             controller.getValue(row, col).toString.take(1)
-                        } else "x"
+                        } else ""
                     }
                     </span>
                 </span>

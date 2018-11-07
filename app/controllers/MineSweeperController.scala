@@ -23,4 +23,9 @@ class MineSweeperController @Inject()(cc: ControllerComponents) extends Abstract
     Ok(views.html.minesweeper(gameController))
   }
 
+  def resizeGrid(height: Int, width: Int, numMines: Int) = Action {
+    gameController.createGrid(height, width, numMines)
+    Ok(views.html.minesweeper(gameController))
+  }
+
 }
