@@ -15,7 +15,7 @@
     border-spacing: 0px;
     border-color: #f6f6FF;
     background-color: black;
-    padding: 0.01em;
+    padding: 1px;
     margin: auto;
     width: auto;
 }
@@ -34,6 +34,14 @@
     width: 1.2em;
     height: 1.2em;
     margin: 1px;
+    text-align: center;
+}
+
+.darkbackground {
+    float: left;
+    background-color: #bababa;
+    width: 1.2em;
+    height: 1.2em;
     text-align: center;
 }
 

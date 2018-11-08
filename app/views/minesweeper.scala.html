@@ -20,9 +20,43 @@
             @for(col <- 0 until height) {
                 <div class="cell">
                     @if(controller.getChecked(row, col)) {
-                        <span class="@{"number"}">
-                        @{controller.getValue(row, col).toString.take(1)}
-                        </span>}
+                        @if(controller.getValue(row, col) == 1) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/1.png")>
+                        }
+                        @if(controller.getValue(row, col) == 2) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/2.png")>
+                        }
+                        @if(controller.getValue(row, col) == 3) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/3.png")>
+                        }
+                        @if(controller.getValue(row, col) == 4) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/4.png")>
+                        }
+                        @if(controller.getValue(row, col) == 5) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/5.png")>
+                        }
+                        @if(controller.getValue(row, col) == 6) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/6.png")>
+                        }
+                        @if(controller.getValue(row, col) == 7) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/7.png")>
+                        }
+                        @if(controller.getValue(row, col) == 8) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/8.png")>
+                        }
+                        @if(controller.getValue(row, col) == -1) {
+                            <img height="24" width="24" src=@routes.Assets.versioned("images/ms/mine.png")>
+                        }
+                        @if(controller.getValue(row, col) == 0) {
+                            <span class="@{
+                                "darkbackground"
+                            }">
+                            </span>
+                        }
+                    }
+                    @if(controller.getFlag(row, col)) {
+                        <img height="24" width="24" src=@routes.Assets.versioned("images/ms/flag.png")>
+                        }
                 </div>
             }
             <div class="clear"></div>

@@ -1,9 +1,10 @@
 package controllers
 
-import javax.inject._
-import play.api.mvc._
 import de.htwg.se.minesweeper.MineSweeper
 import de.htwg.se.minesweeper.controller.ControllerInterface
+
+import javax.inject._
+import play.api.mvc._
 
 @Singleton
 class MineSweeperController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
