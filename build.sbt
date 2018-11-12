@@ -14,4 +14,6 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
 
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.1.0"
+
 libraryDependencies += "com.h2database" % "h2" % "1.4.196"

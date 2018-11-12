@@ -29,4 +29,14 @@ class MineSweeperController @Inject()(cc: ControllerComponents) extends Abstract
     Ok(views.html.minesweeper(gameController))
   }
 
+  def solve = Action {
+    gameController.solve()
+    Ok(views.html.minesweeper(gameController))
+  }
+
+  def setChecked(row: Int, col: Int) = Action {
+    gameController.setChecked(row, col, false, true, false)
+    Ok(views.html.minesweeper(gameController))
+  }
+
 }

@@ -14,6 +14,38 @@
 
 @main("HTWG Minesweeper") {
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/minesweeper.css")' />
+    <script src='@routes.Assets.versioned("javascripts/bootstrap.min.js")'> </script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">HTWG Minesweeper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/new">New</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/solve">Solve</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Size
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/resize/10/10/10">Beginner</a>
+                        <a class="dropdown-item" href="/resize/16/16/70">Intermediate</a>
+                        <a class="dropdown-item" href="/resize/20/20/150">Expert</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="gamecontainer">
         <div class="game">
         @for(row <- 0 until width) {
@@ -24,39 +56,40 @@
                             "darkbackground"
                         }">
                             @if(controller.getValue(row, col) == 1) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/1.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/1.png")>
                             }
                             @if(controller.getValue(row, col) == 2) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/2.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/2.png")>
                             }
                             @if(controller.getValue(row, col) == 3) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/3.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/3.png")>
                             }
                             @if(controller.getValue(row, col) == 4) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/4.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/4.png")>
                             }
                             @if(controller.getValue(row, col) == 5) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/5.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/5.png")>
                             }
                             @if(controller.getValue(row, col) == 6) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/6.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/6.png")>
                             }
                             @if(controller.getValue(row, col) == 7) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/7.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/7.png")>
                             }
                             @if(controller.getValue(row, col) == 8) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/8.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/8.png")>
                             }
                             @if(controller.getValue(row, col) == -1) {
-                                <img height="24" width="24" src=@routes.Assets.versioned("images/ms/mine.png")>
+                                <img height="26" width="26" src=@routes.Assets.versioned("images/ms/mine.png")>
                                 }
                             @if(controller.getValue(row, col) == 0) {
                             </span>
                     }
                     }
                     @if(controller.getFlag(row, col)) {
-                        <img height="24" width="24" src=@routes.Assets.versioned("images/ms/flag.png")>
-                        }
+                        <img height="26" width="26" src=@routes.Assets.versioned("images/ms/flag.png")>
+                    }
+                <a href="/set/@row/@col">&nbsp;</a>
                 </div>
             }
             <div class="clear"></div>
