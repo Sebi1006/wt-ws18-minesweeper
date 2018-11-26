@@ -50,6 +50,96 @@ a:link {
     border-color: #bababa;
     width: 1.5em;
     height: 1.5em;
-    margin: -1px;
+    margin: 1px;
     text-align: center;
+}
+
+.one {
+    background: url(../images/ms/1.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.two {
+    background: url(../images/ms/2.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.three {
+    background: url(../images/ms/3.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.four {
+    background: url(../images/ms/4.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.five {
+    background: url(../images/ms/5.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.six {
+    background: url(../images/ms/6.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.seven {
+    background: url(../images/ms/7.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.eight {
+    background: url(../images/ms/8.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.mine {
+    background: url(../images/ms/mine.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.flag {
+    background: url(../images/ms/flag.png) #bababa;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
 }

@@ -39,4 +39,18 @@ class MineSweeperController @Inject()(cc: ControllerComponents) extends Abstract
     Ok(views.html.minesweeper(gameController))
   }
 
+  def setFlag(row: Int, col: Int) = Action {
+    gameController.setFlag(row, col, false, true)
+    Ok(views.html.minesweeper(gameController))
+  }
+
+  def unsetFlag(row: Int, col: Int) = Action {
+    gameController.setFlag(row, col, true, true)
+    Ok(views.html.minesweeper(gameController))
+  }
+
+  def gridToJson = Action {
+    Ok(gameController.toJson())
+  }
+
 }

@@ -8,8 +8,11 @@ GET        /                                       controllers.MineSweeperContro
 GET        /new                                    controllers.MineSweeperController.newGrid
 GET        /solve                                  controllers.MineSweeperController.solve
 GET        /set/:row/:col                          controllers.MineSweeperController.setChecked(row:Int, col:Int)
+GET        /flag/:row/:col                         controllers.MineSweeperController.setFlag(row:Int, col:Int)
+GET        /noflag/:row/:col                       controllers.MineSweeperController.unsetFlag(row:Int, col:Int)
 GET        /resize/:height/:width/:numMines        controllers.MineSweeperController.resizeGrid(height:Int, width:Int, numMines:Int)
 GET        /about                                  controllers.MineSweeperController.about
+GET        /json                                   controllers.MineSweeperController.gridToJson
 
 
 # Map static resources from the /public folder to the /assets URL path
