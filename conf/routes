@@ -13,6 +13,7 @@ GET        /noflag/:row/:col                       controllers.MineSweeperContro
 GET        /resize/:height/:width/:numMines        controllers.MineSweeperController.resizeGrid(height:Int, width:Int, numMines:Int)
 GET        /about                                  controllers.MineSweeperController.about
 GET        /json                                   controllers.MineSweeperController.gridToJson
+GET        /websocket                              controllers.MineSweeperController.socket
 
 
 # Map static resources from the /public folder to the /assets URL path
