@@ -1,10 +1,10 @@
 # HTWG Minesweeper
 
-This is an implementation of Minesweeper for the class
+This is a web implementation of Minesweeper for the class
 Web Technologies at the University of Applied Sciences HTWG Konstanz.
 
 
-## Commands to play
+## Commands to play (TUI)
 
 * **h** for help
 * **new** to start a new game
