@@ -174,6 +174,32 @@ function loadJson() {
     });
 }
 
+function connectWebSocket() {
+    let websocket = new WebSocket("ws://localhost:9000/websocket");
+
+    websocket.onopen = function () {
+        console.log("Connected to Websocket");
+    };
+
+    websocket.onclose = function () {
+        console.log("Connection with Websocket closed");
+    };
+
+    websocket.onerror = function (error) {
+        console.log("Error in Websocket occured: " + error);
+    };
+
+    websocket.onmessage = function (e) {
+        if (typeof e.data === "string") {
+            let json = JSON.parse(e.data);
+            let cells = json.grid.cells;
+            grid.fill(cells);
+            updateGrid(grid);
+        }
+    };
+}
+
 $(document).ready(function () {
     initialLoadJson();
+    connectWebSocket();
 });

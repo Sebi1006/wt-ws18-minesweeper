@@ -1,0 +1,200 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="minesweeper-app">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            .gamecontainer {
+                height: 100%;
+                width: 100%;
+                margin: 1.0em;
+                display: flex;
+                font-size: 20px;
+                font-family: "Verdana", Geneva, sans-serif;
+                font-weight: bold;
+                color: black;
+            }
+
+            .game {
+                border-style: inset;
+                border-width: 1px;
+                border-spacing: 0px;
+                border-color: #f6f6FF;
+                background-color: black;
+                padding: 1px;
+                margin: auto;
+                width: auto;
+            }
+
+            .clear {
+                clear: both;
+            }
+
+            .cell {
+                display: inline-block;
+                float: left;
+                border-style: outset;
+                border-width: 1px;
+                background-color: #E0E0FF;
+                border-color: #f6f6FF;
+                width: 1.5em;
+                height: 1.5em;
+                margin: 1px;
+                text-align: center;
+            }
+
+            .darkbackground {
+                display: inline-block;
+                float: left;
+                border-style: outset;
+                border-width: 1px;
+                background-color: #bababa;
+                border-color: #bababa;
+                width: 1.5em;
+                height: 1.5em;
+                margin: 1px;
+                text-align: center;
+            }
+
+            .one {
+                background: url(../../images/ms/1.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .two {
+                background: url(../../images/ms/2.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .three {
+                background: url(../../images/ms/3.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .four {
+                background: url(../../images/ms/4.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .five {
+                background: url(../../images/ms/5.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .six {
+                background: url(../../images/ms/6.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .seven {
+                background: url(../../images/ms/7.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .eight {
+                background: url(../../images/ms/8.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .mine {
+                background: url(../../images/ms/mine.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+            .flag {
+                background: url(../../images/ms/flag.png) #bababa;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 25px;
+                width: 1.5em;
+                height: 1.5em;
+            }
+        </style>
+        <div class="gamecontainer">
+            <div class="game">
+                <template is="dom-repeat" items="{{cells}}">
+                    <div class="cell" id="scalar1">
+                        [[item.value]]
+                        <div class="clear"></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        class MineSweeperApp extends Polymer.Element {
+            static get is() {
+                return 'minesweeper-app';
+            }
+
+            static get properties() {
+                return {
+                    cell: {
+                        type: Number,
+                        value: [2]
+                    },
+
+                    cells: {
+                        type: Array,
+                        value() {
+                            return [
+                                {value: '1'},
+                                {value: '2'},
+                                {value: '3'},
+                                {value: '4'},
+                                {value: '5'},
+                                {value: '6'},
+                                {value: '7'},
+                                {value: '8'},
+                                {value: '-1'}
+                            ];
+                        }
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(MineSweeperApp.is, MineSweeperApp);
+    </script>
+</dom-module>
