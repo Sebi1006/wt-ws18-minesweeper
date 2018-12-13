@@ -43,7 +43,7 @@ let grid = new Grid(initialSize);
 function updateGrid(grid) {
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
         if (grid.cellchecked[scalar] == true) {
-            $("#scalar" + scalar).addClass("darkbackground");
+            $("#scalar" + scalar).addClass("background");
             $("#scalar" + scalar).off("click");
 
             if (grid.cellvalue[scalar] == 1) {
@@ -91,23 +91,17 @@ function updateGrid(grid) {
 
 function setCell(scalar) {
     setCellOnServer(row(scalar), col(scalar));
-    setTimeout(function () {
-        loadJson();
-    }, 100);
+    loadJson();
 }
 
 function setFlag(scalar) {
     setFlagOnServer(row(scalar), col(scalar));
-    setTimeout(function () {
-        loadJson();
-    }, 100);
+    loadJson();
 }
 
 function unsetFlag(scalar) {
     unsetFlagOnServer(row(scalar), col(scalar));
-    setTimeout(function () {
-        loadJson();
-    }, 100);
+    loadJson();
 }
 
 function setCellOnServer(row, col) {

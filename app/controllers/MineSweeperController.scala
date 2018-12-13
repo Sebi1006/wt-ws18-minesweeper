@@ -94,7 +94,4 @@ class MineSweeperController @Inject()(cc: ControllerComponents)(implicit system:
     }
   }
 
-  def polymer = Action {
-    Ok(views.html.polymer())
-  }
 }
