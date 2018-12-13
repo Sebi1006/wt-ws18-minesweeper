@@ -1,7 +1,0 @@
-{
-  "name": "minesweeper",
-  "short_name": "minesweeper",
-  "description": "Minesweeper for HTWG lecture Web Technologies",
-  "start_url": "/",
-  "display": "standalone"
-}
