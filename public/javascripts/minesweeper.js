@@ -1,4 +1,9 @@
 let initialSize = 10;
+let clicks = 0;
+let numberOfMines;
+let flagCounter;
+let textNode;
+let flags;
 
 function row(scalar) {
     if (scalar == 0) {
@@ -27,6 +32,14 @@ class Grid {
         this.cellvalue = [];
         this.cellchecked = [];
         this.cellflag = [];
+
+        if (gridSize == 10) {
+            numberOfMines = 10;
+        } else if (gridSize == 16) {
+            numberOfMines = 40;
+        } else if (gridSize == 20) {
+            numberOfMines = 80;
+        }
     }
 
     fill(json) {
@@ -123,6 +136,8 @@ function registerClickListener() {
 
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
         $("#scalar" + scalar).click(function () {
+            clicks++;
+            startStopwatch();
             setCell(scalar);
         });
 
@@ -131,8 +146,14 @@ function registerClickListener() {
                 if (grid.cellflag[scalar] == true) {
                     unsetFlag(scalar);
                     $("#scalar" + scalar).removeClass("flag");
+                    ++flagCounter;
+                    updateFlagCounter();
                 } else {
-                    setFlag(scalar);
+                    if (flagCounter > 0) {
+                        setFlag(scalar);
+                        --flagCounter;
+                        updateFlagCounter();
+                    }
                 }
             }
         });
@@ -193,7 +214,39 @@ function connectWebSocket() {
     };
 }
 
+function initialStopwatch() {
+    setTimeout(function () {
+        textNode = document.createTextNode('0');
+        document.getElementById('seconds').appendChild(textNode);
+    }, 200);
+}
+
+function startStopwatch() {
+    if (clicks == 1) {
+        window.setInterval((function () {
+            let start = Date.now();
+            return function () {
+                textNode.data = Math.floor((Date.now() - start) / 1000);
+            };
+        }()), 1000);
+    }
+}
+
+function initialFlagCounter() {
+    setTimeout(function () {
+        flagCounter = numberOfMines;
+        flags = document.createTextNode(numberOfMines);
+        document.getElementById('flags').appendChild(flags);
+    }, 200);
+}
+
+function updateFlagCounter() {
+    flags.data = flagCounter;
+}
+
 $(document).ready(function () {
     initialLoadJson();
     connectWebSocket();
+    initialStopwatch();
+    initialFlagCounter();
 });
