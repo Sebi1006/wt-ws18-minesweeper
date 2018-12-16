@@ -52,12 +52,14 @@ class Grid {
 }
 
 let grid = new Grid(initialSize);
+let winCounter = 0;
+let gameFinished = false;
 
 function updateGrid(grid) {
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
         if (grid.cellchecked[scalar] == true) {
             $("#scalar" + scalar).addClass("background");
-            $("#scalar" + scalar).off("click");
+            $("#scalar" + scalar).off("click").off("mousedown");
 
             if (grid.cellvalue[scalar] == 1) {
                 $("#scalar" + scalar).addClass("one");
@@ -102,19 +104,59 @@ function updateGrid(grid) {
     }
 }
 
+function lose() {
+    alert("Game Over!");
+
+    gameFinished = true;
+
+    for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
+        $("#scalar" + scalar).off("click").off("mousedown");
+
+        if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
+            $("#scalar" + scalar).removeClass("flag");
+        }
+    }
+}
+
+function win() {
+    alert("You Win!");
+
+    gameFinished = true;
+
+    for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
+        $("#scalar" + scalar).off("click").off("mousedown");
+    }
+}
+
 function setCell(scalar) {
     setCellOnServer(row(scalar), col(scalar));
     loadJson();
+
+    if (grid.cellvalue[scalar] == -1) {
+        lose();
+    }
 }
 
 function setFlag(scalar) {
     setFlagOnServer(row(scalar), col(scalar));
     loadJson();
+
+    if (grid.cellvalue[scalar] == -1) {
+        winCounter++;
+
+        if (winCounter == numberOfMines) {
+            win();
+        }
+    }
 }
 
 function unsetFlag(scalar) {
     unsetFlagOnServer(row(scalar), col(scalar));
     loadJson();
+
+    if (grid.cellvalue[scalar] == -1) {
+        winCounter--;
+    }
 }
 
 function setCellOnServer(row, col) {
@@ -226,7 +268,9 @@ function startStopwatch() {
         window.setInterval((function () {
             let start = Date.now();
             return function () {
-                textNode.data = Math.floor((Date.now() - start) / 1000);
+                if (!gameFinished) {
+                    textNode.data = Math.floor((Date.now() - start) / 1000);
+                }
             };
         }()), 1000);
     }
