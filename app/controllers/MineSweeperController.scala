@@ -7,57 +7,76 @@ import de.htwg.se.minesweeper.controller.{CellChanged, GridSizeChanged, Winner}
 import javax.inject._
 import play.api.mvc._
 import play.api.libs.streams.ActorFlow
+import play.api.i18n.I18nSupport
 
 import akka.actor._
 import akka.stream.Materializer
 
 import scala.swing.Reactor
+import scala.concurrent.Future
+
+import com.mohiva.play.silhouette.api.Silhouette
+import com.mohiva.play.silhouette.api.actions.SecuredRequest
+import org.webjars.play.WebJarsUtil
+import utils.auth.DefaultEnv
 
 @Singleton
-class MineSweeperController @Inject()(cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
+class MineSweeperController @Inject()(components: ControllerComponents,
+                                      silhouette: Silhouette[DefaultEnv]
+                                     )(
+                                       implicit
+                                       webJarsUtil: WebJarsUtil,
+                                       assets: AssetsFinder,
+                                       system: ActorSystem,
+                                       mat: Materializer
+                                     ) extends AbstractController(components) with I18nSupport {
 
   val gameController: ControllerInterface = MineSweeper.controller
 
-  def about = Action {
-    Ok(views.html.index())
+  def index: Action[AnyContent] = silhouette.UnsecuredAction.async { implicit request: Request[AnyContent] =>
+    Future.successful(Ok(views.html.home()))
   }
 
-  def minesweeper = Action {
-    Ok(views.html.minesweeper(gameController))
+  def about: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    Future.successful(Ok(views.html.home()))
   }
 
-  def newGrid = Action {
+  def minesweeper: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
+  }
+
+  def newGrid: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.createGrid(10, 10, 10)
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def resizeGrid(height: Int, width: Int, numMines: Int) = Action {
+  def resizeGrid(height: Int, width: Int, numMines: Int): Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.createGrid(height, width, numMines)
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def solve = Action {
+  def solve: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.solve()
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def setChecked(row: Int, col: Int) = Action {
+  def setChecked(row: Int, col: Int): Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.setChecked(row, col, false, true, false)
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def setFlag(row: Int, col: Int) = Action {
+  def setFlag(row: Int, col: Int): Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.setFlag(row, col, false, true)
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def unsetFlag(row: Int, col: Int) = Action {
+  def unsetFlag(row: Int, col: Int): Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.setFlag(row, col, true, true)
-    Ok(views.html.minesweeper(gameController))
+    Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
-  def gridToJson = Action {
-    Ok(gameController.toJson())
+  def gridToJson: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    Future.successful(Ok(gameController.toJson()))
   }
 
   def socket: WebSocket = WebSocket.accept[String, String] { _ =>
@@ -83,12 +102,12 @@ class MineSweeperController @Inject()(cc: ControllerComponents)(implicit system:
     }
 
     reactions += {
-      case event: GridSizeChanged => sendJsonToClient
-      case event: CellChanged => sendJsonToClient
-      case event: Winner => sendJsonToClient
+      case event: GridSizeChanged => sendJsonToClient()
+      case event: CellChanged => sendJsonToClient()
+      case event: Winner => sendJsonToClient()
     }
 
-    def sendJsonToClient: Unit = {
+    def sendJsonToClient(): Unit = {
       println("Received event from Controller")
       out ! gameController.toJson().toString
     }

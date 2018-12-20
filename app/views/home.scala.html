@@ -1,0 +1,64 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main(messages("home.title"), None) {
+
+    <div class="card">
+        <h1 class="card-header">About Minesweeper</h1>
+        <div class="card-body">
+            <p class="card-text">
+                Minesweeper is a single-player puzzle video game.
+                The objective of the game is to clear a rectangular board
+                containing hidden "mines" or bombs without detonating any of them,
+                with help from clues about the number of neighboring mines in each field.
+                The game originates from the 1960s, and has been written for many computing platforms in use today.
+                It has many variations and offshoots.
+            </p>
+            <a href="/minesweeper" class="btn btn-primary">Play</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h1 class="card-header">History</h1>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text">
+                            Minesweeper has its origins in the earliest mainframe games of the 1960s and 1970s.
+                            The earliest ancestor of Minesweeper was Jerimac Ratliff's Cube.
+                            The basic gameplay style became a popular segment of the puzzle game genre during the 1980s,
+                            with such titles as Mined-Out (Quicksilva, 1983), Yomp (Virgin Interactive, 1983), and Cube.
+                            Cube was succeeded by Relentless Logic (or RLogic for short), by Conway, Hong, and Smith,
+                            available for MS-DOS as early as 1985; the player took the role of a private in the United States Marine Corps,
+                            delivering an important message to the U.S. Command Center.
+                            RLogic had greater similarity to Minesweeper than to Cube in concept, but a number of differences exist:
+                        </p>
+                        <p class="card-text">
+                            1. In RLogic, the player must navigate through the minefield, from the top left right angled corner to the bottom right angled corner (the Command Center). <br>
+                            2. It is not necessary to clear all non-mine squares. Also, there is no mechanism for marking mines or counting the number of mines found. <br>
+                            3. The number of steps taken is counted. Although no high score functionality is included, players could attempt to beat their personal best score for a given number of mines. <br>
+                            4. Unlike Minesweeper, the size of the minefield is fixed. However, the player may still specify the number of mines. <br>
+                            5. Because the player must navigate through the minefield, it is sometimes impossible to win — namely, when the mines block all possible paths.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">
+                            The gameplay mechanics of Minesweeper are included in a variety of other software titles, including:
+                        </p>
+                        <p class="card-text">
+                            1. The mini-game Vinesweeper implemented into the MMORPG RuneScape; in this iteration (written by Jagex developer Danny J), the Minesweeper gameplay is given a large multiplayer aspect and the "game board" adopts a continually resetting timer. This allows for a never-ending game of Minesweeper where the skill is assessed in points rather than "game completion". <br>
+                            2. The PC game Mole Control (developed by Remode); in this game, the minesweeper mechanic is integrated into a puzzle adventure game based in a village called Molar Creek, which has been overrun with exploding moles. You play the local inventor's assistant, who is tasked with clearing the village of exploding moles, and you can also take part in the Molar Creek Annual Mole Control competition in a Time Attack Mode.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href="/minesweeper" class="btn btn-primary">Play</a>
+        </div>
+    </div>
+
+}

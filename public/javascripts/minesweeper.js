@@ -125,6 +125,42 @@ function win() {
 
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
         $("#scalar" + scalar).off("click").off("mousedown");
+
+        if (grid.cellchecked[scalar] == false && grid.cellflag[scalar] == false) {
+            $("#scalar" + scalar).addClass("background");
+
+            if (grid.cellvalue[scalar] == 1) {
+                $("#scalar" + scalar).addClass("one");
+            }
+
+            if (grid.cellvalue[scalar] == 2) {
+                $("#scalar" + scalar).addClass("two");
+            }
+
+            if (grid.cellvalue[scalar] == 3) {
+                $("#scalar" + scalar).addClass("three");
+            }
+
+            if (grid.cellvalue[scalar] == 4) {
+                $("#scalar" + scalar).addClass("four");
+            }
+
+            if (grid.cellvalue[scalar] == 5) {
+                $("#scalar" + scalar).addClass("five");
+            }
+
+            if (grid.cellvalue[scalar] == 6) {
+                $("#scalar" + scalar).addClass("six");
+            }
+
+            if (grid.cellvalue[scalar] == 7) {
+                $("#scalar" + scalar).addClass("seven");
+            }
+
+            if (grid.cellvalue[scalar] == 8) {
+                $("#scalar" + scalar).addClass("eight");
+            }
+        }
     }
 }
 
