@@ -1,1 +1,2 @@
 web: target/universal/stage/bin/wt-ws18-minesweeper -Dhttp.port=${PORT}
+-Dconfig.resource=${PLAY_CONF_FILE}
