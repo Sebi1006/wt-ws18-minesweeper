@@ -33,9 +33,7 @@
             <div class="social-providers">
                 <p>@messages("or.use.social")</p>
                 <div>
-                @for(p <- socialProviders.providers) {
-                    <a href="@controllers.routes.SocialAuthController.authenticate(p.id)" class="provider @p.id" title="@messages(p.id)"><img src="@assets.path(s"images/providers/${p.id}.png")" width="64px" height="64px" alt="@messages(p.id)"></a>
-                }
+                    <a href="@controllers.routes.SocialAuthController.authenticate("google")" class="provider google" title="@messages("google")"><img src="@assets.path(s"images/providers/google.png")" width="64px" height="64px" alt="@messages("google")"></a>
                 </div>
             </div>
         }
