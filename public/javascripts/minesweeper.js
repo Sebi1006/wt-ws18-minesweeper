@@ -268,7 +268,7 @@ function loadJson() {
 }
 
 function connectWebSocket() {
-    let websocket = new WebSocket("ws://localhost:9000/websocket");
+    let websocket = new WebSocket("ws://wt-ws18-minesweeper.herokuapp.com/websocket");
 
     websocket.onopen = function () {
         console.log("Connected to Websocket");
