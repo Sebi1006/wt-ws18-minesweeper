@@ -41,7 +41,7 @@ activate.account=Activate Account
 current.password=Current password
 new.password=New password
 remember.me=Remember my login on this computer
-or.use.social=Or use your existing account on one of the following services to sign in:
+or.use.social=Or use your existing account on the following service to sign in:
 forgot.password.info=Please enter your email address and we will send you an email with further instructions to reset your password.
 strong.password.info=Strong passwords include numbers, letters and punctuation marks.
 current.password.invalid=The entered password is invalid. Please enter the correct password!
@@ -65,7 +65,7 @@ yahoo=Yahoo
 ##########
 # Emails
 ##########
-email.from=Silhouette <noreply@mohiva.com>
+email.from=Silhouette <htwg.minesweeper@gmx.de>
 # Sign Up
 email.sign.up.subject=Welcome
 email.sign.up.hello=Hello {0},
