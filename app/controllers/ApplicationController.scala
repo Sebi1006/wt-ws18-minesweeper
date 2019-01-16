@@ -34,7 +34,7 @@ class ApplicationController @Inject()(
     * @return The result to display.
     */
   def index = silhouette.UnsecuredAction.async { implicit request: Request[AnyContent] =>
-    Future.successful(Ok(views.html.home()))
+    Future.successful(Ok(views.html.homeIndex()))
   }
 
   /**

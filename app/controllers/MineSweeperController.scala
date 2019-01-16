@@ -34,11 +34,11 @@ class MineSweeperController @Inject()(components: ControllerComponents,
   val gameController: ControllerInterface = MineSweeper.controller
 
   def index: Action[AnyContent] = silhouette.UnsecuredAction.async { implicit request: Request[AnyContent] =>
-    Future.successful(Ok(views.html.home()))
+    Future.successful(Ok(views.html.homeIndex()))
   }
 
   def about: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Ok(views.html.home()))
+    Future.successful(Ok(views.html.homeAbout(gameController, request.identity)))
   }
 
   def minesweeper: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
