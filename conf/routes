@@ -14,6 +14,7 @@ GET         /noflag/:row/:col                       controllers.MineSweeperContr
 GET         /resize/:height/:width/:numMines        controllers.MineSweeperController.resizeGrid(height:Int, width:Int, numMines:Int)
 GET         /about                                  controllers.MineSweeperController.about
 GET         /index                                  controllers.MineSweeperController.index
+GET         /bye                                    controllers.MineSweeperController.indexAfterLogout
 GET         /json                                   controllers.MineSweeperController.gridToJson
 GET         /websocket                              controllers.MineSweeperController.socket
 

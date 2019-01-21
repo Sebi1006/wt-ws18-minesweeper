@@ -37,6 +37,10 @@ class MineSweeperController @Inject()(components: ControllerComponents,
     Future.successful(Ok(views.html.homeIndex()))
   }
 
+  def indexAfterLogout: Action[AnyContent] = silhouette.UnsecuredAction.async { implicit request: Request[AnyContent] =>
+    Future.successful(Ok(views.html.homeIndexAfterLogout()))
+  }
+
   def about: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     Future.successful(Ok(views.html.homeAbout(gameController, request.identity)))
   }
