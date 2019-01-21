@@ -1,0 +1,61 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(controller: de.htwg.se.minesweeper.controller.ControllerInterface, user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@height = @{
+    controller.height()
+}
+
+@width = @{
+    controller.width()
+}
+
+@toScalar(row: Int, col: Int) = @{
+    row * height + col
+}
+
+@main("HTWG Minesweeper", Some(user)) {
+    <audio id="login">
+        <source type="audio/mpeg" src=@routes.Assets.versioned("audio/login.mp3")>
+    </audio>
+    <script>
+            let loginSound = document.getElementById("login");
+            loginSound.play();
+    </script>
+    @*<script src="@assets.path("javascripts/vue.js")" ></script>*@
+    @*<script src="@assets.path("javascripts/minesweeperVue.js")" ></script>*@
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/minesweeper.css")' />
+    @*<div id="minesweeper-game" class="gamecontainer">*@
+    @*<minesweeper-field></minesweeper-field>*@
+    @*</div>*@
+    <div class="gamecontainer">
+        <div class="game">
+        @for(row <- 0 until height) {
+            @for(col <- 0 until width) {
+                <div class="cell" id="scalar@{
+                    toScalar(row, col)
+                }"></div>
+            }
+            <div class="clear"></div>
+        }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columnclock">
+            <img height="25" width="25" src=@routes.Assets.versioned("images/ms/clock.png")>
+        </div>
+        <div class="columntimer">
+            <div class="stopwatch" id=seconds></div>
+        </div>
+        <div class="columnmine">
+            <img height="25" width="25" src=@routes.Assets.versioned("images/ms/mine.png")>
+        </div>
+        <div class="columncounter">
+            <div class="flagcounter" id=flags></div>
+        </div>
+    </div>
+}

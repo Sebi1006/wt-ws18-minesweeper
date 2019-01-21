@@ -5,6 +5,7 @@
 # Routes for Minesweeper
 
 GET         /minesweeper                            controllers.MineSweeperController.minesweeper
+GET         /welcome                                controllers.MineSweeperController.minesweeperAfterLogin
 GET         /new                                    controllers.MineSweeperController.newGrid
 GET         /solve                                  controllers.MineSweeperController.solve
 GET         /set/:row/:col                          controllers.MineSweeperController.setChecked(row:Int, col:Int)

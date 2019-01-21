@@ -45,6 +45,10 @@ class MineSweeperController @Inject()(components: ControllerComponents,
     Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
   }
 
+  def minesweeperAfterLogin: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    Future.successful(Ok(views.html.minesweeperAfterLogin(gameController, request.identity)))
+  }
+
   def newGrid: Action[AnyContent] = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     gameController.createGrid(10, 10, 10)
     Future.successful(Ok(views.html.minesweeper(gameController, request.identity)))
