@@ -5,6 +5,26 @@ let flagCounter;
 let textNode;
 let flags;
 
+let clickSound = new sound("../audio/click.mp3");
+let flagSound = new sound("../audio/flag.mp3");
+let winSound = new sound("../audio/win.mp3");
+let loseSound = new sound("../audio/explosion.mp3");
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function () {
+        this.sound.play();
+    }
+    this.stop = function () {
+        this.sound.pause();
+    }
+}
+
 function row(scalar) {
     if (scalar == 0) {
         return 0;
@@ -105,6 +125,7 @@ function updateGrid(grid) {
 }
 
 function lose() {
+    loseSound.play();
     alert("Game Over!");
 
     gameFinished = true;
@@ -119,6 +140,7 @@ function lose() {
 }
 
 function win() {
+    winSound.play();
     alert("You Win!");
 
     gameFinished = true;
@@ -165,6 +187,7 @@ function win() {
 }
 
 function setCell(scalar) {
+    clickSound.play();
     setCellOnServer(row(scalar), col(scalar));
     loadJson();
 
@@ -174,6 +197,7 @@ function setCell(scalar) {
 }
 
 function setFlag(scalar) {
+    flagSound.play();
     setFlagOnServer(row(scalar), col(scalar));
     loadJson();
 
