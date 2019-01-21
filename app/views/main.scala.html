@@ -6,6 +6,22 @@
 
 @(title: String, user: Option[models.User] = None)(content: Html)(implicit request: RequestHeader, messages: Messages, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
 
+<audio id="click">
+    <source type="audio/mpeg" src=@routes.Assets.versioned("audio/click.mp3")>
+</audio>
+
+<audio id="flag">
+    <source type="audio/mpeg" src=@routes.Assets.versioned("audio/flag.mp3")>
+</audio>
+
+<audio id="explosion">
+    <source type="audio/mpeg" src=@routes.Assets.versioned("audio/explosion.mp3")>
+</audio>
+
+<audio id="victory">
+    <source type="audio/mpeg" src=@routes.Assets.versioned("audio/victory.mp3")>
+</audio>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

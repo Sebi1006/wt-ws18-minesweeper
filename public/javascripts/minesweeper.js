@@ -5,25 +5,10 @@ let flagCounter;
 let textNode;
 let flags;
 
-let clickSound = new sound("../audio/click.mp3");
-let flagSound = new sound("../audio/flag.mp3");
-let winSound = new sound("../audio/win.mp3");
-let loseSound = new sound("../audio/explosion.mp3");
-
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function () {
-        this.sound.play();
-    }
-    this.stop = function () {
-        this.sound.pause();
-    }
-}
+let clickSound = document.getElementById("click");
+let flagSound = document.getElementById("flag");
+let winSound = document.getElementById("victory");
+let loseSound = document.getElementById("explosion");
 
 function row(scalar) {
     if (scalar == 0) {
@@ -187,7 +172,6 @@ function win() {
 }
 
 function setCell(scalar) {
-    clickSound.play();
     setCellOnServer(row(scalar), col(scalar));
     loadJson();
 
@@ -197,7 +181,6 @@ function setCell(scalar) {
 }
 
 function setFlag(scalar) {
-    flagSound.play();
     setFlagOnServer(row(scalar), col(scalar));
     loadJson();
 
@@ -238,6 +221,7 @@ function registerClickListener() {
 
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
         $("#scalar" + scalar).click(function () {
+            clickSound.play();
             clicks++;
             startStopwatch();
             setCell(scalar);
@@ -246,12 +230,14 @@ function registerClickListener() {
         $("#scalar" + scalar).mousedown(function (e) {
             if (e.which == 3) {
                 if (grid.cellflag[scalar] == true) {
+                    flagSound.play();
                     unsetFlag(scalar);
                     $("#scalar" + scalar).removeClass("flag");
                     ++flagCounter;
                     updateFlagCounter();
                 } else {
                     if (flagCounter > 0) {
+                        flagSound.play();
                         setFlag(scalar);
                         --flagCounter;
                         updateFlagCounter();
