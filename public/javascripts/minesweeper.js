@@ -113,7 +113,7 @@ function lose() {
     loseSound.play();
     setTimeout(function () {
         alert("Game Over!");
-    }, 1000);
+    }, 2000);
 
     gameFinished = true;
 
