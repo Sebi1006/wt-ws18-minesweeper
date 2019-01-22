@@ -101,6 +101,13 @@ function updateGrid(grid) {
             if (grid.cellvalue[scalar] == -1) {
                 $("#scalar" + scalar).addClass("mine");
             }
+
+            if (grid.cellflag[scalar] == true) {
+                $("#scalar" + scalar).removeClass("flag");
+                unsetFlagOnServer(row(scalar), col(scalar));
+                ++flagCounter;
+                updateFlagCounter();
+            }
         }
     }
 }
