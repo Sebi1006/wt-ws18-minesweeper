@@ -111,7 +111,9 @@ function updateGrid(grid) {
 
 function lose() {
     loseSound.play();
-    alert("Game Over!");
+    setTimeout(function () {
+        alert("Game Over!");
+    }, 1000);
 
     gameFinished = true;
 
