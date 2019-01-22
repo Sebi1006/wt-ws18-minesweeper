@@ -97,6 +97,10 @@ function updateGrid(grid) {
             if (grid.cellvalue[scalar] == 8) {
                 $("#scalar" + scalar).addClass("eight");
             }
+
+            if (grid.cellvalue[scalar] == -1) {
+                $("#scalar" + scalar).addClass("mine");
+            }
         }
 
         if (grid.cellflag[scalar] == true) {
@@ -120,10 +124,11 @@ function lose() {
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
             $("#scalar" + scalar).removeClass("flag");
+            $("#scalar" + scalar).addClass("mine");
         }
 
         if (grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).addClass("mine");
+            $("#scalar" + scalar).addClass("mineexplosion");
         }
     }
 }
