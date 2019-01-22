@@ -97,10 +97,6 @@ function updateGrid(grid) {
             if (grid.cellvalue[scalar] == 8) {
                 $("#scalar" + scalar).addClass("eight");
             }
-
-            if (grid.cellvalue[scalar] == -1) {
-                $("#scalar" + scalar).addClass("mine");
-            }
         }
 
         if (grid.cellflag[scalar] == true) {
@@ -123,9 +119,11 @@ function lose() {
         $("#scalar" + scalar).off("click").off("mousedown");
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).removeClass("mine");
             $("#scalar" + scalar).removeClass("flag");
-            $("#scalar" + scalar).addClass("mine2");
+        }
+
+        if (grid.cellvalue[scalar] == -1) {
+            $("#scalar" + scalar).addClass("mine");
         }
     }
 }
@@ -179,10 +177,11 @@ function win() {
 
 function setCell(scalar) {
     setCellOnServer(row(scalar), col(scalar));
-    loadJson();
 
     if (grid.cellvalue[scalar] == -1) {
         lose();
+    } else {
+        loadJson();
     }
 }
 
