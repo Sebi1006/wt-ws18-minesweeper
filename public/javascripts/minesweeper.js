@@ -117,8 +117,7 @@ function lose() {
         $("#scalar" + scalar).off("click").off("mousedown");
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).removeClass("flag");
-            $("#scalar" + scalar).addClass("mine");
+            $("#scalar" + scalar).toggleClass("mine");
         }
 
         if (grid.cellvalue[scalar] == -1) {
