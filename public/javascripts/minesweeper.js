@@ -113,17 +113,28 @@ function lose() {
 
     gameFinished = true;
 
-    for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
-        $("#scalar" + scalar).off("click").off("mousedown").removeClass("mine");
+    $.ajax({
+        method: "GET",
+        url: "/json",
+        dataType: "json",
 
-        if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).removeClass("flag");
-        }
+        success: function (result) {
+            grid = new Grid(result.grid.height);
+            grid.fill(result.grid.cells);
 
-        if (grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).addClass("mineexplosion");
+            for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
+                $("#scalar" + scalar).off("click").off("mousedown").removeClass("mine");
+
+                if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
+                    $("#scalar" + scalar).removeClass("flag");
+                }
+
+                if (grid.cellvalue[scalar] == -1) {
+                    $("#scalar" + scalar).addClass("mineexplosion");
+                }
+            }
         }
-    }
+    });
 }
 
 function win() {
