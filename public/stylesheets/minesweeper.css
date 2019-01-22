@@ -136,6 +136,15 @@ a:link {
     height: 1.5em;
 }
 
+.mine2 {
+    background: url(../images/ms/explosion-without-animation.gif) #dcdcff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
 .flag {
     background: url(../images/ms/flag.png) #dcdcff;
     background-repeat: no-repeat;

@@ -124,7 +124,7 @@ function lose() {
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
             $("#scalar" + scalar).removeClass("flag");
-            $("#scalar" + scalar).addClass("mine");
+            $("#scalar" + scalar).addClass("mine2");
         }
     }
 }
