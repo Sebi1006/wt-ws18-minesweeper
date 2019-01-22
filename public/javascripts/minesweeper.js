@@ -105,6 +105,8 @@ function updateGrid(grid) {
 
         if (grid.cellflag[scalar] == true) {
             $("#scalar" + scalar).addClass("flag");
+        } else {
+            $("#scalar" + scalar).removeClass("flag");
         }
     }
 }
@@ -122,6 +124,7 @@ function lose() {
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
             $("#scalar" + scalar).removeClass("flag");
+            $("#scalar" + scalar).addClass("mine");
         }
     }
 }
@@ -234,7 +237,6 @@ function registerClickListener() {
                 if (grid.cellflag[scalar] == true) {
                     flagSound.play();
                     unsetFlag(scalar);
-                    $("#scalar" + scalar).removeClass("flag");
                     ++flagCounter;
                     updateFlagCounter();
                 } else {
