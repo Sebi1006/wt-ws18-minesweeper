@@ -123,6 +123,7 @@ function lose() {
         $("#scalar" + scalar).off("click").off("mousedown");
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
+            $("#scalar" + scalar).removeClass("mine");
             $("#scalar" + scalar).removeClass("flag");
             $("#scalar" + scalar).addClass("mine2");
         }
