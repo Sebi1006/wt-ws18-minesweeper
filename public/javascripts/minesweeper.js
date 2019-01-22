@@ -102,7 +102,7 @@ function updateGrid(grid) {
                 $("#scalar" + scalar).addClass("mine");
             }
 
-            if (grid.cellflag[scalar] == true) {
+            if ($("#scalar" + scalar).hasClass("flag")) {
                 $("#scalar" + scalar).removeClass("flag");
                 unsetFlagOnServer(row(scalar), col(scalar));
                 ++flagCounter;
