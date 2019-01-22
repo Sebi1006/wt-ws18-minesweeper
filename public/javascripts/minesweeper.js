@@ -102,12 +102,6 @@ function updateGrid(grid) {
                 $("#scalar" + scalar).addClass("mine");
             }
         }
-
-        if (grid.cellflag[scalar] == true) {
-            $("#scalar" + scalar).addClass("flag");
-        } else {
-            $("#scalar" + scalar).removeClass("flag");
-        }
     }
 }
 
@@ -241,12 +235,14 @@ function registerClickListener() {
             if (e.which == 3) {
                 if (grid.cellflag[scalar] == true) {
                     flagSound.play();
+                    $("#scalar" + scalar).removeClass("flag");
                     unsetFlag(scalar);
                     ++flagCounter;
                     updateFlagCounter();
                 } else {
                     if (flagCounter > 0) {
                         flagSound.play();
+                        $("#scalar" + scalar).addClass("flag");
                         setFlag(scalar);
                         --flagCounter;
                         updateFlagCounter();
