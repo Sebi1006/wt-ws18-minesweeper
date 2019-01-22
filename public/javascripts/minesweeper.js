@@ -114,10 +114,10 @@ function lose() {
     gameFinished = true;
 
     for (let scalar = 0; scalar < grid.size * grid.size; scalar++) {
-        $("#scalar" + scalar).off("click").off("mousedown");
+        $("#scalar" + scalar).off("click").off("mousedown").removeClass("mine");
 
         if (grid.cellflag[scalar] == true && grid.cellvalue[scalar] == -1) {
-            $("#scalar" + scalar).toggleClass("mine");
+            $("#scalar" + scalar).removeClass("flag");
         }
 
         if (grid.cellvalue[scalar] == -1) {
